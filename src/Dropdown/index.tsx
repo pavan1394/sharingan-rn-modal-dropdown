@@ -56,7 +56,6 @@ const Dropdown: React.FC<IDropdownProps> = props => {
     parentDDContainerStyle,
     emptyListText,
     disableSort,
-    labelColor,
     enableAvatar,
     avatarSize,
     defaultSortOrder = 'asc',
@@ -292,23 +291,23 @@ const Dropdown: React.FC<IDropdownProps> = props => {
               multiline={multiline}
               theme={{
                 ...searchInputTheme,
-                colors: { primary: primaryColor, error: errorColor, text: labelColor },
+                colors: { primary: primaryColor, error: errorColor },
               }}
-              right={
-                <TextInput.Icon
-                  name={dropdownIcon}
-                  size={dropdownIconSize}
-                  color={iconColor}
-                />
-              }
+              // right={
+              //   <TextInput.Icon
+              //     name={dropdownIcon}
+              //     size={dropdownIconSize}
+              //     color={iconColor}
+              //   />
+              // }
               mode={mode}
             />
           </View>
-          {required && hasError ? (
+          {required && helperText ? (
             <HelperText
               type="error"
               theme={{ colors: { error: errorColor } }}
-              visible={hasError}
+              visible={helperText ? true : false}
             >
               {helperText ? helperText : `${label} is required`}
             </HelperText>
